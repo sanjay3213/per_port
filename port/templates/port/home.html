@@ -1,0 +1,30 @@
+{% extends 'port/base.html'%}
+
+
+{% block content %}
+<h1>this is my portfolio</h1>
+
+
+<a href="{% url 'blog:all_blogs' %}">Blogs</a>
+
+{%load static%}
+
+<a href="{% static 'port/Resume.pdf'%}"> Resume</a><br>
+<img src="{% static 'port/myphoto.jpg'%}">
+
+
+
+{% for x in  projects %}
+
+<h2>{{x.title}}</h2>
+<p>{{x.discription}}</p>
+<img src="{{x.image.url}}" height ="250" width="250"><br>
+
+{% if x.url %}
+<a href="{{x.url}}">link</a><br>
+{% endif %}
+
+{% endfor %}
+
+
+{%endblock%}
